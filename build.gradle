@@ -1,0 +1,46 @@
+/*
+ * *
+ *  * build.gradle
+ *  * as part of whereisthat-android
+ *  *
+ *  * Created by michaelkuck, last updated on 7/24/14 7:54 PM
+ *  * Unless otherwise stated in a separate LICENSE file for this project
+ *  * or agreed via contract, all rights reserved by the author.
+ *
+ */
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 20
+    buildToolsVersion "20.0.0"
+
+    defaultConfig {
+        applicationId "com.michael_kuck.mkcommons.android"
+        minSdkVersion 15
+        targetSdkVersion 20
+        versionCode 1
+        versionName "1.0"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile 'com.google.code.gson:gson:2.2.4'
+}

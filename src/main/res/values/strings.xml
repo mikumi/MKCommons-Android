@@ -1,0 +1,14 @@
+<!--
+  ~ /**
+  ~  * strings.xml
+  ~  * as part of whereisthat-android
+  ~  *
+  ~  * Created by michaelkuck, last updated on 7/24/14 7:54 PM
+  ~  * Unless otherwise stated in a separate LICENSE file for this project
+  ~  * or agreed via contract, all rights reserved by the author.
+  ~  */
+  -->
+
+<resources>
+    <string name="app_name">MKCommons Android</string>
+</resources>

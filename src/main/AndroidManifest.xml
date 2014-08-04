@@ -1,0 +1,23 @@
+<!--
+  ~ /**
+  ~  * AndroidManifest.xml
+  ~  * as part of whereisthat-android
+  ~  *
+  ~  * Created by michaelkuck, last updated on 7/24/14 7:54 PM
+  ~  * Unless otherwise stated in a separate LICENSE file for this project
+  ~  * or agreed via contract, all rights reserved by the author.
+  ~  */
+  -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.michael_kuck.mkcommons.android">
+
+    <application
+            android:allowBackup="true"
+            android:label="@string/app_name"
+            android:icon="@drawable/ic_launcher"
+            >
+
+    </application>
+
+</manifest>
