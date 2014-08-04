@@ -14,7 +14,7 @@ package com.michael_kuck.mkcommons.android;
 /**
  * Created by michaelkuck on 7/29/14.
  */
-public class HashHelper {
+public class HashUtil {
 
     public static String md5(final String message) {
         try {

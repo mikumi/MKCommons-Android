@@ -18,24 +18,18 @@ import java.io.*;
 /**
  * Created by michaelkuck on 7/30/14.
  */
-public class ResourceHelper {
+public class ResourceUtil {
 
-    /**
-     * @param fileName
-     * @return
-     */
-    public static boolean isFileFromRawReady(final String fileName) {
+    public static boolean isFileFromRawResourceReady(final String fileName) {
         final File outputFile = new File(MKCommons.getApplication().getExternalFilesDir(null), fileName);
         return outputFile.exists();
     }
 
-    /**
-     * @param rawResource
-     * @param fileName
-     * @return
-     */
-    public static File getFileFromRaw(final int rawResource, final String fileName) {
+    public static File getFileFromRawResources(final int rawResourceId) {
+        final String resourceName = MKCommons.getApplication().getResources().getResourceEntryName(rawResourceId);
+        final String fileName = resourceName + ".raw";
         final File outputFile = new File(MKCommons.getApplication().getExternalFilesDir(null), fileName);
+
         if (outputFile.exists()) {
             Log.verbose("Accessing previously copied raw resource: " + fileName);
             return outputFile;
@@ -48,8 +42,9 @@ public class ResourceHelper {
         InputStream inputStream = null;
         OutputStream outputStream = null;
         boolean success = true;
-        try {
-            inputStream = MKCommons.getApplication().getResources().openRawResource(rawResource);
+        try
+        {
+            inputStream = MKCommons.getApplication().getResources().openRawResource(rawResourceId);
             outputStream = new FileOutputStream(outputFile);
 
             final byte[] data = new byte[1024 * 64]; // TODO: good size?
@@ -59,21 +54,26 @@ public class ResourceHelper {
                 }
                 outputStream.write(data);
             }
-        } catch (final FileNotFoundException e) {
+        } catch (final FileNotFoundException e)
+        {
             Log.error("Could not file: " + e.getLocalizedMessage());
             success = false;
-        } catch (final IOException e) {
+        } catch (final IOException e)
+        {
             Log.error("Could not write file: " + e.getLocalizedMessage());
             success = false;
-        } finally {
-            try {
+        } finally
+        {
+            try
+            {
                 if (inputStream != null) {
                     inputStream.close();
                 }
                 if (outputStream != null) {
                     outputStream.close();
                 }
-            } catch (final IOException e) {
+            } catch (final IOException e)
+            {
                 Log.error("Could not close map tiles file: " + e.getLocalizedMessage());
             }
         }
@@ -90,7 +90,8 @@ public class ResourceHelper {
         final File file = new File(MKCommons.getApplication().getExternalFilesDir(null), filename);
         if (file.delete()) {
             Log.debug(file.getName() + " deleted.");
-        } else {
+        } else
+        {
             Log.debug("Could not delete " + file.getName());
         }
     }

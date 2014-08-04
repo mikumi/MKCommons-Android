@@ -17,7 +17,7 @@ import android.widget.FrameLayout;
 /**
  * Created by michaelkuck on 7/24/14.
  */
-public class FrameLayoutHelper {
+public class FrameLayoutUtil {
 
     /**
      * @param frameLayout

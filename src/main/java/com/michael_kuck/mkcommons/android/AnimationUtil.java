@@ -18,7 +18,7 @@ import android.view.ViewPropertyAnimator;
 /**
  * Created by michaelkuck on 7/25/14.
  */
-public class AnimationHelper {
+public class AnimationUtil {
 
     /**
      * @param view

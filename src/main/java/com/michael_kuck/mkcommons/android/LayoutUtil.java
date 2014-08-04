@@ -18,7 +18,7 @@ import android.util.TypedValue;
 /**
  * Created by michaelkuck on 7/25/14.
  */
-public class LayoutHelper {
+public class LayoutUtil {
 
     public static Point dpToP(final Context context, final Point point) {
         int x = (int) TypedValue

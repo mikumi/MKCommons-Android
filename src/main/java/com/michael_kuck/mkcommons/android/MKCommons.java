@@ -16,6 +16,7 @@ import android.app.Application;
 /**
  * Created by michaelkuck on 7/30/14.
  */
+// TODO: find a better name
 public class MKCommons {
 
     private static Application application = null;

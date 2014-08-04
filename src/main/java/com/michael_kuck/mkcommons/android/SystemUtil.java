@@ -30,7 +30,7 @@ import java.lang.reflect.Field;
 /**
  * @author michaelkuck
  */
-public class SystemHelper {
+public class SystemUtil {
 
     /**
      * @return
