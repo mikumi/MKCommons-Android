@@ -1,7 +1,7 @@
 /*
  * *
- *  * HashHelper.java
- *  * as part of whereisthat-android
+ *  * HashUtil.java
+ *  * as part of mkcommons-android
  *  *
  *  * Created by michaelkuck, last updated on 7/29/14 2:12 PM
  *  * Unless otherwise stated in a separate LICENSE file for this project

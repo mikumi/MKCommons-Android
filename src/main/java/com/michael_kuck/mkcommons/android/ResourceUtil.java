@@ -1,7 +1,7 @@
 /*
  * *
- *  * ResourceHelper.java
- *  * as part of whereisthat-android
+ *  * ResourceUtil.java
+ *  * as part of mkcommons-android
  *  *
  *  * Created by michaelkuck, last updated on 7/30/14 2:29 PM
  *  * Unless otherwise stated in a separate LICENSE file for this project
@@ -11,6 +11,7 @@
 
 package com.michael_kuck.mkcommons.android;
 
+import com.michael_kuck.mkcommons.FileUtil;
 import com.michael_kuck.mkcommons.Stopwatch;
 
 import java.io.*;
@@ -25,9 +26,20 @@ public class ResourceUtil {
         return outputFile.exists();
     }
 
-    public static File getFileFromRawResources(final int rawResourceId) {
+    /**
+     * Copies a raw resource to external storage and returns a handle to that. If the file already exists, it will not
+     * be copied again.
+     * <p/>
+     * On Android it is impossible to get a direct file handle to a raw resource. If this is still required, we can get
+     * around that by using this method.
+     *
+     * @param rawResourceId ID of the raw resource which will be copied to external storage
+     * @return File handle to the copied resource
+     */
+    public static File getFileFromRawResources(final int rawResourceId) throws IOException {
         final String resourceName = MKCommons.getApplication().getResources().getResourceEntryName(rawResourceId);
         final String fileName = resourceName + ".raw";
+        // null means external root (instead of a subdir)
         final File outputFile = new File(MKCommons.getApplication().getExternalFilesDir(null), fileName);
 
         if (outputFile.exists()) {
@@ -38,60 +50,27 @@ public class ResourceUtil {
         Log.debug("Copying raw resource to external file dir: " + fileName);
         Stopwatch stopwatch = new Stopwatch();
         stopwatch.start();
-        // TODO: clean up
-        InputStream inputStream = null;
-        OutputStream outputStream = null;
-        boolean success = true;
-        try
-        {
-            inputStream = MKCommons.getApplication().getResources().openRawResource(rawResourceId);
-            outputStream = new FileOutputStream(outputFile);
 
-            final byte[] data = new byte[1024 * 64]; // TODO: good size?
-            while (true) {
-                if (inputStream.read(data) < 0) {
-                    break;
-                }
-                outputStream.write(data);
-            }
-        } catch (final FileNotFoundException e)
-        {
-            Log.error("Could not file: " + e.getLocalizedMessage());
-            success = false;
-        } catch (final IOException e)
-        {
-            Log.error("Could not write file: " + e.getLocalizedMessage());
-            success = false;
-        } finally
-        {
-            try
-            {
-                if (inputStream != null) {
-                    inputStream.close();
-                }
-                if (outputStream != null) {
-                    outputStream.close();
-                }
-            } catch (final IOException e)
-            {
-                Log.error("Could not close map tiles file: " + e.getLocalizedMessage());
-            }
-        }
+        InputStream inputStream = MKCommons.getApplication().getResources().openRawResource(rawResourceId);
+        OutputStream outputStream = new FileOutputStream(outputFile);
+        FileUtil.copyStream(inputStream, outputStream);
+        FileUtil.closeHandle(inputStream);
+        FileUtil.closeHandle(outputStream);
 
         stopwatch.stop();
-        Log.verbose("Copying file took: " + stopwatch.getSeconds() + "s");
-        return (success) ? outputFile : null;
+        Log.verbose("Copying file took: " + stopwatch.getTimeInSeconds() + "s");
+
+        return outputFile;
     }
 
     /**
      * @param filename
      */
-    public static void removeExternalFile(final String filename) {
+    public static void removeFileFromExternalStorage(final String filename) {
         final File file = new File(MKCommons.getApplication().getExternalFilesDir(null), filename);
         if (file.delete()) {
             Log.debug(file.getName() + " deleted.");
-        } else
-        {
+        } else {
             Log.debug("Could not delete " + file.getName());
         }
     }

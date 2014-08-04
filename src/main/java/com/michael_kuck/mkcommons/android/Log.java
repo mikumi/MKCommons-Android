@@ -1,7 +1,7 @@
 /*
  * *
- *  * SLog.java
- *  * as part of whereisthat-android
+ *  * Log.java
+ *  * as part of mkcommons-android
  *  *
  *  * Created by michaelkuck, last updated on 7/30/14 11:05 AM
  *  * Unless otherwise stated in a separate LICENSE file for this project

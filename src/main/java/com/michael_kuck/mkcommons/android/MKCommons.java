@@ -1,7 +1,7 @@
 /*
  * *
  *  * MKCommons.java
- *  * as part of whereisthat-android
+ *  * as part of mkcommons-android
  *  *
  *  * Created by michaelkuck, last updated on 7/30/14 2:31 PM
  *  * Unless otherwise stated in a separate LICENSE file for this project

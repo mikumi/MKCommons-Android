@@ -1,7 +1,7 @@
 /*
  * *
- *  * ViewHelper.java
- *  * as part of whereisthat-android
+ *  * ViewUtil.java
+ *  * as part of mkcommons-android
  *  *
  *  * Created by michaelkuck, last updated on 7/24/14 9:02 PM
  *  * Unless otherwise stated in a separate LICENSE file for this project

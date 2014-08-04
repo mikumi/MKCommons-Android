@@ -1,7 +1,7 @@
 /*
  * *
- *  * FrameLayoutHelper.java
- *  * as part of whereisthat-android
+ *  * FrameLayoutUtil.java
+ *  * as part of mkcommons-android
  *  *
  *  * Created by michaelkuck, last updated on 7/24/14 7:36 PM
  *  * Unless otherwise stated in a separate LICENSE file for this project

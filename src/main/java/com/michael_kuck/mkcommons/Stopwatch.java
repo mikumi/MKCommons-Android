@@ -1,7 +1,7 @@
 /*
  * *
  *  * Stopwatch.java
- *  * as part of whereisthat-android
+ *  * as part of mkcommons-android
  *  *
  *  * Created by michaelkuck, last updated on 7/30/14 2:57 PM
  *  * Unless otherwise stated in a separate LICENSE file for this project
@@ -19,31 +19,19 @@ public class Stopwatch {
     private long startTime;
     private long stopTime;
 
-    /**
-     *
-     */
     public void start() {
         startTime = System.currentTimeMillis();
     }
 
-    /**
-     *
-     */
     public void stop() {
         stopTime = System.currentTimeMillis();
     }
 
-    /**
-     * @return
-     */
-    public long getMillis() {
+    public long getTimeInMillis() {
         return stopTime - startTime;
     }
 
-    /**
-     * @return
-     */
-    public double getSeconds() {
+    public double getTimeInSeconds() {
         return (stopTime - startTime) / 1000.0f;
     }
 

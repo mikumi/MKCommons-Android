@@ -1,7 +1,7 @@
 /*
  * *
- *  * SystemHelper.java
- *  * as part of whereisthat-android
+ *  * SystemUtil.java
+ *  * as part of mkcommons-android
  *  *
  *  * Created by michaelkuck, last updated on 7/30/14 11:22 AM
  *  * Unless otherwise stated in a separate LICENSE file for this project

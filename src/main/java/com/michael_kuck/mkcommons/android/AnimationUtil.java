@@ -1,7 +1,7 @@
 /*
  * *
- *  * AnimationHelper.java
- *  * as part of whereisthat-android
+ *  * AnimationUtil.java
+ *  * as part of mkcommons-android
  *  *
  *  * Created by michaelkuck, last updated on 7/25/14 3:41 PM
  *  * Unless otherwise stated in a separate LICENSE file for this project

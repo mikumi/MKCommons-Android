@@ -1,7 +1,7 @@
 /*
  * *
- *  * LayoutHelper.java
- *  * as part of whereisthat-android
+ *  * LayoutUtil.java
+ *  * as part of mkcommons-android
  *  *
  *  * Created by michaelkuck, last updated on 7/25/14 1:00 PM
  *  * Unless otherwise stated in a separate LICENSE file for this project

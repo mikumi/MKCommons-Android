@@ -1,7 +1,7 @@
 /*
  * *
- *  * FileHelper.java
- *  * as part of whereisthat-android
+ *  * FileUtil.java
+ *  * as part of mkcommons-android
  *  *
  *  * Created by michaelkuck, last updated on 8/4/14 10:39 AM
  *  * Unless otherwise stated in a separate LICENSE file for this project
@@ -22,7 +22,7 @@ public class FileUtil {
 
     public static final int FILE_COPY_BUFFER_SIZE = 1024 * 4; // TODO: is this a good buffer size?
 
-    public void copyFile(final File inputFile, final File outputFile) throws IOException {
+    public static void copyFile(final File inputFile, final File outputFile) throws IOException {
         final FileInputStream inputStream = new FileInputStream(inputFile);
         final FileOutputStream outputStream = new FileOutputStream(outputFile);
         copyStream(inputStream, outputStream);
@@ -30,15 +30,16 @@ public class FileUtil {
         closeHandle(outputStream);
     }
 
-    public void copyStream(final InputStream inputStream, final OutputStream outputStream) throws IOException {
+    public static void copyStream(final InputStream inputStream, final OutputStream outputStream) throws IOException {
         final byte[] buffer = new byte[FILE_COPY_BUFFER_SIZE];
         int bytesRead;
         while ((bytesRead = inputStream.read(buffer)) >= 0) {
-            outputStream.write(buffer, 0, bytesRead);
+            final int bufferOffset = 0;
+            outputStream.write(buffer, bufferOffset, bytesRead);
         }
     }
 
-    public void closeHandle(final Closeable closeable) {
+    public static void closeHandle(final Closeable closeable) {
         if (closeable != null) {
             try {
                 closeable.close();

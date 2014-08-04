@@ -1,7 +1,7 @@
 /*
  * *
  *  * PersistentSettings.java
- *  * as part of whereisthat-android
+ *  * as part of mkcommons-android
  *  *
  *  * Created by michaelkuck, last updated on 7/31/14 10:23 AM
  *  * Unless otherwise stated in a separate LICENSE file for this project

@@ -1,7 +1,7 @@
 /*
  * *
- *  * CustomView.java
- *  * as part of whereisthat-android
+ *  * ViewElement.java
+ *  * as part of mkcommons-android
  *  *
  *  * Created by michaelkuck, last updated on 8/1/14 3:05 PM
  *  * Unless otherwise stated in a separate LICENSE file for this project
