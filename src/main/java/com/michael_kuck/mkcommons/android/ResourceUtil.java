@@ -45,22 +45,22 @@ public class ResourceUtil {
         if (outputFile.exists()) {
             Log.verbose("Accessing previously copied raw resource: " + fileName);
             return outputFile;
+        } else {
+            Log.debug("Copying raw resource to external file dir: " + fileName);
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.start();
+
+            InputStream inputStream = MKCommons.getApplication().getResources().openRawResource(rawResourceId);
+            OutputStream outputStream = new FileOutputStream(outputFile);
+            FileUtil.copyStream(inputStream, outputStream);
+            FileUtil.closeHandle(inputStream);
+            FileUtil.closeHandle(outputStream);
+
+            stopwatch.stop();
+            Log.verbose("Copying file took: " + stopwatch.getTimeInSeconds() + "s");
+
+            return outputFile;
         }
-
-        Log.debug("Copying raw resource to external file dir: " + fileName);
-        Stopwatch stopwatch = new Stopwatch();
-        stopwatch.start();
-
-        InputStream inputStream = MKCommons.getApplication().getResources().openRawResource(rawResourceId);
-        OutputStream outputStream = new FileOutputStream(outputFile);
-        FileUtil.copyStream(inputStream, outputStream);
-        FileUtil.closeHandle(inputStream);
-        FileUtil.closeHandle(outputStream);
-
-        stopwatch.stop();
-        Log.verbose("Copying file took: " + stopwatch.getTimeInSeconds() + "s");
-
-        return outputFile;
     }
 
     /**
