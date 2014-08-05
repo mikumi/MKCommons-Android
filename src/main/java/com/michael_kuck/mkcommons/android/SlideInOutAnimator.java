@@ -87,11 +87,13 @@ public class SlideInOutAnimator {
     }
 
     public static void setStartingPositionTop(final View view) {
+        view.setTranslationX(0.0f);
         final int hiddenY = getYForHiddenToTop(view);
         view.setTranslationY(hiddenY);
     }
 
     public static void setStartingPositionBottom(final View view) {
+        view.setTranslationX(0.0f);
         final int hiddenY = getYForHiddenToBottom(view);
         view.setTranslationY(hiddenY);
     }
@@ -99,11 +101,13 @@ public class SlideInOutAnimator {
     public static void setStartingPositionLeft(final View view) {
         final int hiddenX = getXForHiddenToLeft(view);
         view.setTranslationX(hiddenX);
+        view.setTranslationY(0.0f);
     }
 
     public static void setStartingPositionRight(final View view) {
         final int hiddenX = getXForHiddenToRight(view);
         view.setTranslationX(hiddenX);
+        view.setTranslationY(0.0f);
     }
 
 }
