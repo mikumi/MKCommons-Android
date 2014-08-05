@@ -20,25 +20,15 @@ import android.view.ViewPropertyAnimator;
  */
 public class AnimationUtil {
 
-    /**
-     * @param view
-     * @param newX
-     * @param duration
-     * @param completionBlock
-     */
-    public static void translateX(final View view, final int newX, final int duration, final Runnable completionBlock) {
-        translateX(view, newX, duration, view.getVisibility(), completionBlock);
+    public static ViewPropertyAnimator translateXAnimator(final View view, final int newX, final int duration,
+                                                          final Runnable completionBlock)
+    {
+        return translateXAnimator(view, newX, duration, view.getVisibility(), completionBlock);
     }
 
-    /**
-     * @param view
-     * @param newX
-     * @param duration
-     * @param visibilityOnCompletion
-     * @param completionBlock
-     */
-    public static void translateX(final View view, final float newX, final int duration,
-                                  final int visibilityOnCompletion, final Runnable completionBlock)
+    public static ViewPropertyAnimator translateXAnimator(final View view, final float newX, final int duration,
+                                                          final int visibilityOnCompletion,
+                                                          final Runnable completionBlock)
     {
         Runnable onAnimationEnd = new Runnable() {
             @Override
@@ -51,28 +41,41 @@ public class AnimationUtil {
         };
         ViewPropertyAnimator animator = view.animate().translationX(newX).setDuration(duration);
         setCompletionBlock(animator, onAnimationEnd);
-        animator.start();
+        return animator;
     }
 
-    /**
-     * @param view
-     * @param newY
-     * @param duration
-     * @param completionBlock
-     */
-    public static void translateY(final View view, final int newY, final int duration, final Runnable completionBlock) {
-        translateY(view, newY, duration, view.getVisibility(), completionBlock);
+    public static void setCompletionBlock(final ViewPropertyAnimator animator, final Runnable completionBlock) {
+        animator.setListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(final Animator animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(final Animator animation) {
+                if (completionBlock != null) {
+                    completionBlock.run();
+                }
+            }
+
+            @Override
+            public void onAnimationCancel(final Animator animation) {
+            }
+
+            @Override
+            public void onAnimationRepeat(final Animator animation) {
+            }
+        });
     }
 
-    /**
-     * @param view
-     * @param newY
-     * @param duration
-     * @param visibilityOnCompletion
-     * @param completionBlock
-     */
-    public static void translateY(final View view, final float newY, final int duration,
-                                  final int visibilityOnCompletion, final Runnable completionBlock)
+    public static ViewPropertyAnimator translateYAnimator(final View view, final int newY, final int duration,
+                                                          final Runnable completionBlock)
+    {
+        return translateYAnimator(view, newY, duration, view.getVisibility(), completionBlock);
+    }
+
+    public static ViewPropertyAnimator translateYAnimator(final View view, final float newY, final int duration,
+                                                          final int visibilityOnCompletion,
+                                                          final Runnable completionBlock)
     {
         Runnable onAnimationEnd = new Runnable() {
             @Override
@@ -85,37 +88,7 @@ public class AnimationUtil {
         };
         ViewPropertyAnimator animator = view.animate().translationY(newY).setDuration(duration);
         setCompletionBlock(animator, onAnimationEnd);
-        animator.start();
-    }
-
-    /**
-     * @param animator
-     * @param completionBlock
-     */
-    private static void setCompletionBlock(final ViewPropertyAnimator animator, final Runnable completionBlock) {
-        animator.setListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(final Animator animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(final Animator animation) {
-                if (completionBlock != null) {
-                    completionBlock.run();
-                }
-            }
-
-            @Override
-            public void onAnimationCancel(final Animator animation) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(final Animator animation) {
-
-            }
-        });
+        return animator;
     }
 
 }

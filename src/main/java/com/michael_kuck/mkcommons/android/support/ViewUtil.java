@@ -11,6 +11,9 @@
 
 package com.michael_kuck.mkcommons.android.support;
 
+import android.graphics.Point;
+import android.view.View;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -38,6 +41,19 @@ public class ViewUtil {
                 return result;
             }
         }
+    }
+
+    /**
+     * Get the absolute screen position of the top left corner of the view in x,y coordinates.
+     *
+     * @param view
+     * @return
+     */
+    public static Point getOrigin(final View view) {
+        final int origin[] = new int[2];
+        view.getLocationOnScreen(origin);
+        final Point originAsPoint = new Point(origin[0], origin[1]);
+        return originAsPoint;
     }
 
 }
