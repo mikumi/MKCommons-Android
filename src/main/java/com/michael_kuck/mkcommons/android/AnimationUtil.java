@@ -14,6 +14,7 @@ package com.michael_kuck.mkcommons.android;
 import android.animation.Animator;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
+import android.view.animation.Animation;
 
 /**
  * Created by michaelkuck on 7/25/14.
@@ -63,6 +64,27 @@ public class AnimationUtil {
 
             @Override
             public void onAnimationRepeat(final Animator animation) {
+            }
+        });
+    }
+
+    public static void setCompletionBlock(final Animation animation, final Runnable completionBlock) {
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(final Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(final Animation animation) {
+                if (completionBlock != null) {
+                    completionBlock.run();
+                }
+            }
+
+            @Override
+            public void onAnimationRepeat(final Animation animation) {
+
             }
         });
     }
