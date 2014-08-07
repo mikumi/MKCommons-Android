@@ -9,7 +9,7 @@
  *
  */
 
-package com.michael_kuck.mkcommons.android.support;
+package com.michael_kuck.mkcommons.android;
 
 import android.graphics.Point;
 import android.view.View;

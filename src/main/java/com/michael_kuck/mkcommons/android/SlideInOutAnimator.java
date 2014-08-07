@@ -12,7 +12,6 @@ package com.michael_kuck.mkcommons.android;
 import android.graphics.Point;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
-import com.michael_kuck.mkcommons.android.support.ViewUtil;
 
 /**
  * Created by michaelkuck on 8/5/14.
