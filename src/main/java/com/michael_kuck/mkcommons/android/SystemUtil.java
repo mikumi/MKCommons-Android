@@ -23,7 +23,9 @@ import android.content.res.Configuration;
 import android.graphics.Point;
 import android.os.Build;
 import android.view.Display;
+import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 
 import java.lang.reflect.Field;
 
@@ -127,8 +129,10 @@ public class SystemUtil {
         return maxMemory;
     }
 
-    //======================================================================
-    //= Private Implementation
-    //======================================================================
+    public static void hideKeyboardForView(final View view) {
+        final InputMethodManager imm =
+                (InputMethodManager) MKCommons.getApplication().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
 
 }
