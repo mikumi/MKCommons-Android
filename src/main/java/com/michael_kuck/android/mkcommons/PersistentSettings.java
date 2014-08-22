@@ -15,6 +15,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import com.michael_kuck.commons.Log;
 
 /**
  * Created by michaelkuck on 7/31/14.

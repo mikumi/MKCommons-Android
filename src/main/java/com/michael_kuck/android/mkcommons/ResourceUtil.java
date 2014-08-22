@@ -12,6 +12,7 @@
 package com.michael_kuck.android.mkcommons;
 
 import com.michael_kuck.commons.FileUtil;
+import com.michael_kuck.commons.Log;
 import com.michael_kuck.commons.Stopwatch;
 
 import java.io.*;

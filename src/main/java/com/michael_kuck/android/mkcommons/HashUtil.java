@@ -11,6 +11,8 @@
 
 package com.michael_kuck.android.mkcommons;
 
+import com.michael_kuck.commons.Log;
+
 /**
  * Created by michaelkuck on 7/29/14.
  */

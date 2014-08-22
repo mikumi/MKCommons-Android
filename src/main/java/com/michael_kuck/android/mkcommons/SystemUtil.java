@@ -26,6 +26,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import com.michael_kuck.commons.Log;
 
 import java.lang.reflect.Field;
 
