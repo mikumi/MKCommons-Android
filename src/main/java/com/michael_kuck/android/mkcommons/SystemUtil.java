@@ -17,6 +17,7 @@ package com.michael_kuck.android.mkcommons;
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
@@ -134,6 +135,12 @@ public class SystemUtil {
         final InputMethodManager imm =
                 (InputMethodManager) MKCommons.getApplication().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public static boolean isDebug(final Context context) {
+        // TODO: refactor, use android specific
+        final boolean isDebug = (context.getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+        return isDebug;
     }
 
 }
