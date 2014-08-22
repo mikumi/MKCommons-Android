@@ -9,7 +9,7 @@
  *
  */
 
-package com.michael_kuck.mkcommons.android.support;
+package com.michael_kuck.android.mkcommons.support;
 
 import android.view.View;
 import android.view.animation.Animation;

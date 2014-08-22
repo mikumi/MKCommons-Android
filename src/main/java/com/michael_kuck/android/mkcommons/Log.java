@@ -12,7 +12,7 @@
 /**
  *
  */
-package com.michael_kuck.mkcommons.android;
+package com.michael_kuck.android.mkcommons;
 
 /**
  * In case you want to know what S stands for: Smart. Smart Log.

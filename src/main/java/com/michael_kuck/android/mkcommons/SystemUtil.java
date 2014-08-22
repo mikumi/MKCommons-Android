@@ -12,7 +12,7 @@
 /**
  *
  */
-package com.michael_kuck.mkcommons.android;
+package com.michael_kuck.android.mkcommons;
 
 import android.annotation.TargetApi;
 import android.app.ActivityManager;

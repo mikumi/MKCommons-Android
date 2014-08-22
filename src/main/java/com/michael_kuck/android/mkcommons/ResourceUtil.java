@@ -9,10 +9,10 @@
  *
  */
 
-package com.michael_kuck.mkcommons.android;
+package com.michael_kuck.android.mkcommons;
 
-import com.michael_kuck.mkcommons.FileUtil;
-import com.michael_kuck.mkcommons.Stopwatch;
+import com.michael_kuck.commons.FileUtil;
+import com.michael_kuck.commons.Stopwatch;
 
 import java.io.*;
 

@@ -9,7 +9,7 @@
  *
  */
 
-package com.michael_kuck.mkcommons.android;
+package com.michael_kuck.android.mkcommons;
 
 /**
  * Created by michaelkuck on 7/29/14.

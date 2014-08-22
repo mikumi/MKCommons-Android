@@ -13,10 +13,10 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 20
-    buildToolsVersion "20.0.0"
+    buildToolsVersion '20.0.0'
 
     defaultConfig {
-        applicationId "com.michael_kuck.mkcommons.android"
+        applicationId "com.michael_kuck.android"
         minSdkVersion 15
         targetSdkVersion 20
         versionCode 1
@@ -41,6 +41,6 @@ repositories {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-
     compile 'com.google.code.gson:gson:2.2.4'
+    compile project(':mkcommons-java')
 }
