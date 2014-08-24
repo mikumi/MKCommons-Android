@@ -137,9 +137,9 @@ public class SystemUtil {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    public static boolean isDebug(final Context context) {
+    public static boolean isDebug() {
         // TODO: refactor, use android specific
-        final boolean isDebug = (context.getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+        final boolean isDebug = (MKCommons.getApplication().getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
         return isDebug;
     }
 
