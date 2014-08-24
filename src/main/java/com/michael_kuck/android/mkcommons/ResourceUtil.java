@@ -23,7 +23,7 @@ import java.io.*;
 public class ResourceUtil {
 
     public static boolean isFileFromRawResourceReady(final String fileName) {
-        final File outputFile = new File(MKCommons.getApplication().getExternalFilesDir(null), fileName);
+        final File outputFile = new File(Android.getApplication().getExternalFilesDir(null), fileName);
         return outputFile.exists();
     }
 
@@ -38,10 +38,10 @@ public class ResourceUtil {
      * @return File handle to the copied resource
      */
     public static File getFileFromRawResources(final int rawResourceId) throws IOException {
-        final String resourceName = MKCommons.getApplication().getResources().getResourceEntryName(rawResourceId);
+        final String resourceName = Android.getApplication().getResources().getResourceEntryName(rawResourceId);
         final String fileName = resourceName + ".raw";
         // null means external root (instead of a subdir)
-        final File outputFile = new File(MKCommons.getApplication().getExternalFilesDir(null), fileName);
+        final File outputFile = new File(Android.getApplication().getExternalFilesDir(null), fileName);
 
         if (outputFile.exists()) {
             Log.verbose("Accessing previously copied raw resource: " + fileName);
@@ -51,7 +51,7 @@ public class ResourceUtil {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.start();
 
-            InputStream inputStream = MKCommons.getApplication().getResources().openRawResource(rawResourceId);
+            InputStream inputStream = Android.getApplication().getResources().openRawResource(rawResourceId);
             OutputStream outputStream = new FileOutputStream(outputFile);
             FileUtil.copyStream(inputStream, outputStream);
             FileUtil.closeHandle(inputStream);
@@ -68,7 +68,7 @@ public class ResourceUtil {
      * @param filename
      */
     public static void removeFileFromExternalStorage(final String filename) {
-        final File file = new File(MKCommons.getApplication().getExternalFilesDir(null), filename);
+        final File file = new File(Android.getApplication().getExternalFilesDir(null), filename);
         if (file.delete()) {
             Log.debug(file.getName() + " deleted.");
         } else {

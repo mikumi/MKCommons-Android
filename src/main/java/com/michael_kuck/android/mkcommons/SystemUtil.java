@@ -41,7 +41,7 @@ public class SystemUtil {
      */
     public static Point getScreenSize() {
         WindowManager windowManager =
-                (WindowManager) MKCommons.getApplication().getSystemService(Context.WINDOW_SERVICE);
+                (WindowManager) Android.getApplication().getSystemService(Context.WINDOW_SERVICE);
         Display display = windowManager.getDefaultDisplay();
         Point displaySize = new Point();
         display.getSize(displaySize);
@@ -52,7 +52,7 @@ public class SystemUtil {
      * @return
      */
     public static boolean isTablet() {
-        final Context applicationContext = MKCommons.getApplication();
+        final Context applicationContext = Android.getApplication();
         final Configuration conf = applicationContext.getResources().getConfiguration();
         int screenLayout = 1;
         try {
@@ -69,44 +69,6 @@ public class SystemUtil {
     }
 
     /**
-     * @return
-     */
-    public static String getPackageName() {
-        final String packageName = MKCommons.getApplication().getPackageName();
-        return packageName;
-    }
-
-    /**
-     * @return
-     */
-    public static PackageInfo getPackageInfo() throws NameNotFoundException {
-        final Context applicationContext = MKCommons.getApplication();
-        final String packageName = getPackageName();
-        final PackageInfo packageInfo = applicationContext.getPackageManager().getPackageInfo(packageName, 0);
-        return packageInfo;
-    }
-
-    /**
-     * Retrieve the version code from the package
-     *
-     * @return An int containing the version code
-     */
-    public static int getVersionCode() throws NameNotFoundException {
-        final PackageInfo packageInfo = getPackageInfo();
-        return packageInfo.versionCode;
-    }
-
-    /**
-     * Retrieve the version code from the package
-     *
-     * @return An int containing the version code
-     */
-    public static String getVersionString() throws NameNotFoundException {
-        final PackageInfo packageInfo = getPackageInfo();
-        return packageInfo.versionName;
-    }
-
-    /**
      * Returns the maximum available memory for this app (max heap size). This can either be the
      * normal max heap size or the max heap size with android:largeHeap="true"
      *
@@ -114,7 +76,7 @@ public class SystemUtil {
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static int getMaxHeapSize() {
-        final Context applicationContext = MKCommons.getApplication();
+        final Context applicationContext = Android.getApplication();
         final ActivityManager activityManager =
                 (ActivityManager) applicationContext.getSystemService(Context.ACTIVITY_SERVICE);
 
@@ -133,13 +95,13 @@ public class SystemUtil {
 
     public static void hideKeyboardForView(final View view) {
         final InputMethodManager imm =
-                (InputMethodManager) MKCommons.getApplication().getSystemService(Context.INPUT_METHOD_SERVICE);
+                (InputMethodManager) Android.getApplication().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     public static boolean isDebug() {
         // TODO: refactor, use android specific
-        final boolean isDebug = (MKCommons.getApplication().getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+        final boolean isDebug = (Android.getApplication().getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
         return isDebug;
     }
 

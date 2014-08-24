@@ -23,7 +23,7 @@ import com.michael_kuck.commons.Log;
 public class PersistentSettings {
 
     private final SharedPreferences preferences =
-            PreferenceManager.getDefaultSharedPreferences(MKCommons.getApplication());
+            PreferenceManager.getDefaultSharedPreferences(Android.getApplication());
 
     /**
      * Hold the static singleton
