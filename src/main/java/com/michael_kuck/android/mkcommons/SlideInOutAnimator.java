@@ -62,10 +62,11 @@ public class SlideInOutAnimator {
         return -origin.x - width;
     }
 
-    public static ViewPropertyAnimator slideBackAnimator(final View view, final int duration,
+    public static ViewPropertyAnimator slideBackAnimator(final View view, final int durationInMillis,
                                                          final Runnable completionBlock)
     {
-        final ViewPropertyAnimator animator = view.animate().translationX(0).translationY(0).setDuration(duration);
+        final ViewPropertyAnimator animator =
+                view.animate().translationX(0).translationY(0).setDuration(durationInMillis);
         AnimationUtil.setCompletionBlock(animator, completionBlock);
         return animator;
     }
