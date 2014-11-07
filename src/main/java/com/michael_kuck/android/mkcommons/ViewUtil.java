@@ -49,7 +49,7 @@ public class ViewUtil {
      * @param view
      * @return
      */
-    public static Point getOrigin(final View view) {
+    public static Point getAbsoluteOrigin(final View view) {
         final int origin[] = new int[2];
         view.getLocationOnScreen(origin);
         final Point originAsPoint = new Point(origin[0], origin[1]);
