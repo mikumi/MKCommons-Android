@@ -12,7 +12,9 @@
 package com.michael_kuck.android.mkcommons;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Point;
+import android.graphics.PointF;
 import android.util.TypedValue;
 
 /**
@@ -20,17 +22,24 @@ import android.util.TypedValue;
  */
 public class LayoutUtil {
 
-    public static Point dpToP(final Context context, final Point point) {
-        int x = (int) TypedValue
-                .applyDimension(TypedValue.COMPLEX_UNIT_DIP, point.x, context.getResources().getDisplayMetrics());
-        int y = (int) TypedValue
-                .applyDimension(TypedValue.COMPLEX_UNIT_DIP, point.y, context.getResources().getDisplayMetrics());
-        return new Point(x, y);
+    public static float pixelFromDp(final float dpPixel) {
+        final Resources resources = Android.getApplication().getResources();
+        final float pixel = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpPixel, resources.getDisplayMetrics());
+        return pixel;
     }
 
-    public static int dpToP(final Context context, final int pixel) {
-        return (int) TypedValue
-                .applyDimension(TypedValue.COMPLEX_UNIT_DIP, pixel, context.getResources().getDisplayMetrics());
+    public static int pixelFromDp(final int dpPixel) {
+        return (int) pixelFromDp((float)dpPixel);
+    }
+
+    public static PointF pixelsFromDpPoint(final PointF dpPixels) {
+        final PointF pixels = new PointF(pixelFromDp(dpPixels.x), pixelFromDp(dpPixels.y));
+        return pixels;
+    }
+
+    public static Point pixelsFromDpPoint(final Point dpPixels) {
+        final Point pixels = new Point(pixelFromDp(dpPixels.x), pixelFromDp(dpPixels.y));
+        return pixels;
     }
 
 }
