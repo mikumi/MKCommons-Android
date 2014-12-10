@@ -11,8 +11,14 @@
 
 package com.michael_kuck.android.mkcommons;
 
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Point;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -54,6 +60,37 @@ public class ViewUtil {
         view.getLocationOnScreen(origin);
         final Point originAsPoint = new Point(origin[0], origin[1]);
         return originAsPoint;
+    }
+
+    /**
+     * View parent holder for inflation, required for rendering some layouts (e.g. RelativeLayouts) before rendering
+     * with @see renderToTDrawable
+     * @return
+     */
+    public static LinearLayout parentHolderForRendering() {
+
+        final LinearLayout viewHolder = new LinearLayout(Android.getApplication().getApplicationContext());
+        viewHolder.setOrientation(LinearLayout.VERTICAL);
+        final LinearLayout.LayoutParams holderLayoutParams =
+                new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                                              ViewGroup.LayoutParams.MATCH_PARENT);
+        viewHolder.setLayoutParams(holderLayoutParams);
+        return viewHolder;
+    }
+
+    public static Drawable renderToDrawable(final View view) {
+        // Measure view size
+        view.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec
+                .makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
+
+        // Render
+        final Bitmap bitmap = Bitmap.createBitmap(view.getMeasuredWidth(), view.getMeasuredHeight(),
+                                                  Bitmap.Config.ARGB_8888);
+        final Canvas canvas = new Canvas(bitmap);
+        view.draw(canvas);
+        final Drawable renderedDrawable = new BitmapDrawable(Android.getApplication().getResources(), bitmap);
+        return renderedDrawable;
     }
 
 }
