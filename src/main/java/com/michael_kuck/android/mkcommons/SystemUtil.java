@@ -22,6 +22,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.graphics.Point;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.view.Display;
 import android.view.View;
@@ -103,6 +105,13 @@ public class SystemUtil {
         // TODO: refactor, use android specific
         final boolean isDebug = (Android.getApplication().getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
         return isDebug;
+    }
+
+    public static boolean isOnline() {
+        final ConnectivityManager connectivityManager =
+                (ConnectivityManager) Android.getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
+        final NetworkInfo netInfo = connectivityManager.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
 }
