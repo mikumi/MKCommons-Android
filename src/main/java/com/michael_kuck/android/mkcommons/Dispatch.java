@@ -10,6 +10,8 @@
 package com.michael_kuck.android.mkcommons;
 
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Looper;
 
 public class Dispatch {
 
@@ -24,9 +26,22 @@ public class Dispatch {
 
             @Override
             protected void onPostExecute(final Void aVoid) {
-                completionTask.run();
+                if (completionTask != null) {
+                    completionTask.run();
+                }
             }
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null);
+    }
+
+    public static void toMainThread(final Runnable completion) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                if (completion != null) {
+                    completion.run();
+                }
+            }
+        });
     }
 
 }
