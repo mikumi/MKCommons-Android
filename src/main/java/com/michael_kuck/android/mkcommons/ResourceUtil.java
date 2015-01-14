@@ -11,6 +11,7 @@
 
 package com.michael_kuck.android.mkcommons;
 
+import android.content.Context;
 import com.michael_kuck.commons.FileUtil;
 import com.michael_kuck.commons.Log;
 import com.michael_kuck.commons.Stopwatch;
@@ -64,15 +65,27 @@ public class ResourceUtil {
         }
     }
 
-    /**
-     * @param filename
-     */
     public static void removeFileFromExternalStorage(final String filename) {
         final File file = new File(Android.getApplication().getExternalFilesDir(null), filename);
         if (file.delete()) {
             Log.debug(file.getName() + " deleted.");
         } else {
             Log.debug("Could not delete " + file.getName());
+        }
+    }
+
+    /**
+     * This will remove an sqlite database file including the journal. Make sure the database is not currently opened
+     *
+     * @param databaseName
+     */
+    public static void removeDatabase(final String databaseName) {
+        final Context context = Android.getApplication().getApplicationContext();
+        final String packageName = context.getPackageName();
+        if (context.deleteDatabase("/data/data/" + packageName + "/databases/" + databaseName)) {
+            Log.info("Database deleted: " + databaseName);
+        } else {
+            Log.info("Could not delete database: " + databaseName + ". Does it exist?");
         }
     }
 
