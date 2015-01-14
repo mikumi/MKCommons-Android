@@ -14,47 +14,22 @@ package com.michael_kuck.android.mkcommons;
 import android.app.Activity;
 import android.view.ViewGroup;
 
-/**
- * Created by michaelkuck on 8/1/14.
- */
+// TODO: this approach is shit and this class should be removed
+@Deprecated
 public abstract class ViewElement {
 
     private final Activity  parentActivity;
     private final ViewGroup parentLayout; // TODO: should it be View or ViewGroup?
 
-    /**
-     * @param parentActivity
-     * @param parentLayout
-     */
     public ViewElement(final Activity parentActivity, final ViewGroup parentLayout) {
         this.parentActivity = parentActivity;
         this.parentLayout = parentLayout;
     }
 
-    /**
-     *
-     */
-    public void attach() {
-        parentLayout.addView(getContentLayout());
-    }
-
-    /**
-     *
-     */
-    public void detach() {
-        parentLayout.removeView(getContentLayout());
-    }
-
-    /**
-     * @return
-     */
     public Activity getParentActivity() {
         return parentActivity;
     }
 
-    /**
-     * @return
-     */
     public ViewGroup getParentLayout() {
         return parentLayout;
     }
