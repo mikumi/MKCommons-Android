@@ -1,6 +1,6 @@
 /*
  * *
- *  * This file is part of whereisthat-android
+ *  * This file is part of mkcommons-android
  *  *
  *  * Unless otherwise stated in a separate LICENSE file for this project
  *  * or agreed via contract, all rights reserved by the author.
